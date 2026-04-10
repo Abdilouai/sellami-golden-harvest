@@ -3,6 +3,12 @@ import { Phone, Facebook, Instagram, MessageCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo.png";
 
+const TiktokIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 448 512" fill="currentColor" stroke="none" className={className} width="24" height="24">
+    <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/>
+  </svg>
+);
+
 const Footer = () => {
   const { t } = useTranslation();
   return (
@@ -41,11 +47,14 @@ const Footer = () => {
             </a>
           </div>
           <div className="flex gap-3 mt-4">
-            <a href="#" className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-primary/20 transition-colors" aria-label="Facebook">
+            <a href="https://www.instagram.com/sellami_honey1/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-primary/20 transition-colors" aria-label="Facebook">
               <Facebook className="w-5 h-5 text-primary" />
             </a>
-            <a href="#" className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-primary/20 transition-colors" aria-label="Instagram">
+            <a href="https://www.instagram.com/sellami_honey1/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-primary/20 transition-colors" aria-label="Instagram">
               <Instagram className="w-5 h-5 text-primary" />
+            </a>
+            <a href="https://www.tiktok.com/@boughadenboughaden99?_r=1&_t=ZS-95Qxk156wbq" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-primary/20 transition-colors" aria-label="TikTok">
+              <TiktokIcon className="w-4 h-4 text-primary" />
             </a>
             <a href="https://wa.me/21623218453" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-primary/20 transition-colors" aria-label="WhatsApp">
               <MessageCircle className="w-5 h-5 text-primary" />
