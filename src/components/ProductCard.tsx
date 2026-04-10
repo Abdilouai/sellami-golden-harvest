@@ -100,7 +100,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             href={`https://wa.me/21623218453?text=${whatsappMsg}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-11 h-11 flex items-center justify-center bg-[#25D366] text-foreground rounded-lg hover:opacity-90 transition-opacity shrink-0"
+            className="w-11 h-11 flex items-center justify-center bg-[#25D366] text-white rounded-lg hover:opacity-90 transition-opacity shrink-0"
             aria-label="Commander par WhatsApp"
           >
             <MessageCircle className="w-5 h-5" />

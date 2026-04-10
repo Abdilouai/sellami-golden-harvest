@@ -111,7 +111,7 @@ const CartDrawer = () => {
               href={`https://wa.me/21623218453?text=${encodeURIComponent("Bonjour, je souhaite passer une commande. Mon panier: " + items.filter(i => !i.isGift).map(i => `${i.name} (${i.weight}) x${i.quantity}`).join(", ") + `. Total: ${total.toFixed(3)} DT`)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 flex items-center justify-center gap-2 bg-[#25D366] text-primary-foreground font-bold rounded-lg text-base hover:opacity-90 transition-opacity"
+              className="w-full py-3 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold rounded-lg text-base hover:opacity-90 transition-opacity"
             >
               <MessageCircle className="w-5 h-5" />
               Commander par WhatsApp

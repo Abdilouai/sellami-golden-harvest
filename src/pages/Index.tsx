@@ -36,11 +36,11 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 animate-fade-in-up">
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="text-gradient-gold glow-text">Le Miel Pur</span>
+                <span className="text-gradient-gold glow-text">Miel Pur de Tunisie</span>
                 <br />
-                <span className="text-foreground">de Tunisie</span>
+                <span className="text-foreground text-3xl md:text-5xl opacity-90 mt-2 block">&bull; Sellami Honey &bull;</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-lg">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-lg mt-6">
                 Découvrez la richesse du miel tunisien, récolté avec passion par la famille Sellami depuis des générations.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -186,16 +186,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Floating WhatsApp */}
-      <a
-        href="https://wa.me/21623218453?text=Bonjour%2C%20je%20souhaite%20passer%20une%20commande"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform z-40"
-        aria-label="WhatsApp"
-      >
-        <MessageCircle className="w-7 h-7 text-foreground" />
-      </a>
+
     </div>
   );
 };

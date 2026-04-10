@@ -6,45 +6,49 @@
 
 @layer base {
   :root {
-    --background: 30 100% 5%;
-    --background-light: 43 76% 94%;
-    --foreground: 30 100% 92%;
+    /* Deep charcoal background #1a1208 */
+    --background: 33 53% 7%;
+    --foreground: 36 30% 95%;
 
-    --card: 30 30% 10%;
-    --card-foreground: 30 100% 92%;
+    /* Slightly lighter card background */
+    --card: 33 40% 10%;
+    --card-foreground: 36 30% 95%;
 
-    --popover: 30 30% 10%;
-    --popover-foreground: 30 100% 92%;
+    --popover: 33 40% 10%;
+    --popover-foreground: 36 30% 95%;
 
-    --primary: 35 80% 47%;
-    --primary-foreground: 30 100% 5%;
+    /* Luxurious gold #d4af77 */
+    --primary: 36 53% 65%;
+    --primary-foreground: 33 53% 7%;
 
-    --secondary: 35 85% 29%;
-    --secondary-foreground: 30 100% 92%;
+    /* Secondary gold */
+    --secondary: 42 30% 20%;
+    --secondary-foreground: 36 53% 65%;
 
-    --muted: 30 20% 15%;
-    --muted-foreground: 35 30% 60%;
+    --muted: 33 30% 15%;
+    --muted-foreground: 36 20% 60%;
 
-    --accent: 43 90% 61%;
-    --accent-foreground: 30 100% 5%;
+    /* Lighter warm honey amber #f5c56e */
+    --accent: 39 88% 70%;
+    --accent-foreground: 33 53% 7%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 35 30% 20%;
-    --input: 35 30% 20%;
-    --ring: 35 80% 47%;
+    --border: 36 30% 15%;
+    --input: 36 30% 15%;
+    --ring: 36 53% 65%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --honey-gold: 35 80% 47%;
-    --honey-dark: 35 85% 29%;
-    --honey-accent: 43 90% 61%;
-    --honey-bg-dark: 30 100% 5%;
-    --honey-bg-light: 43 76% 94%;
-    --honey-text-dark: 30 100% 8%;
-    --honey-text-light: 30 100% 92%;
-    --honey-glow: 35 80% 47% / 0.4;
+    --honey-gold: 36 53% 65%;
+    --honey-dark: 42 30% 20%;
+    --honey-accent: 39 88% 70%;
+    --honey-bg-dark: 33 53% 7%;
+    --honey-bg-light: 36 15% 90%;
+    --honey-text-dark: 33 53% 7%;
+    --honey-text-light: 36 30% 95%;
+    --honey-glow: 39 88% 70% / 0.4;
     --honey-sale: 0 75% 50%;
 
     --sidebar-background: 0 0% 98%;

@@ -7,6 +7,7 @@ import { CartProvider } from "@/context/CartContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Index from "./pages/Index";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
@@ -27,6 +28,7 @@ const App = () => (
         <CartProvider>
           <Navbar />
           <CartDrawer />
+          <FloatingWhatsApp />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/nos-miels" element={<ProductsPage />} />
