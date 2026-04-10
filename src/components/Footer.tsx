@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Phone, Facebook, Instagram, MessageCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo.png";
 
-const Footer = () => (
+const Footer = () => {
+  const { t } = useTranslation();
+  return (
   <footer className="bg-card border-t border-border">
     <div className="container py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -12,26 +15,23 @@ const Footer = () => (
             <span className="font-heading text-lg font-bold text-gradient-gold">Sellami Honey</span>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Miel pur et artisanal de Tunisie. 100% naturel, sans additifs, sans sucre ajouté.
-          </p>
-          <p className="text-sm text-muted-foreground" dir="rtl">
-            عسل تونسي طبيعي وحرفي. 100% طبيعي بدون إضافات
+            {t('footer.desc')}
           </p>
         </div>
 
         <div>
-          <h3 className="font-heading text-base font-bold mb-4 text-primary">Navigation</h3>
+          <h3 className="font-heading text-base font-bold mb-4 text-primary">{t('footer.nav')}</h3>
           <div className="space-y-2">
-            {[["Accueil", "/"], ["Nos Miels", "/nos-miels"], ["Promotions", "/promotions"], ["À Propos", "/a-propos"], ["Contact", "/contact"]].map(([label, path]) => (
+            {[["nav.home", "/"], ["nav.products", "/nos-miels"], ["nav.promos", "/promotions"], ["nav.about", "/a-propos"], ["nav.contact", "/contact"]].map(([keyLabel, path]) => (
               <Link key={path} to={path} className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                {label}
+                {t(keyLabel)}
               </Link>
             ))}
           </div>
         </div>
 
         <div>
-          <h3 className="font-heading text-base font-bold mb-4 text-primary">Contact</h3>
+          <h3 className="font-heading text-base font-bold mb-4 text-primary">{t('footer.contact')}</h3>
           <div className="space-y-3">
             <a href="tel:+21623218453" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
               <Phone className="w-4 h-4" /> +216 23 218 453
@@ -54,23 +54,24 @@ const Footer = () => (
         </div>
 
         <div>
-          <h3 className="font-heading text-base font-bold mb-4 text-primary">Livraison & Paiement</h3>
+          <h3 className="font-heading text-base font-bold mb-4 text-primary">{t('footer.delivery')}</h3>
           <div className="space-y-2 text-sm text-muted-foreground">
-            <p>🚚 Livraison à domicile sur toute la Tunisie</p>
-            <p>💰 Paiement à la livraison</p>
-            <p>🏦 Virement bancaire disponible</p>
-            <p>📦 Emballage cadeau disponible</p>
+            <p>🚚 {t('footer.trust1')}</p>
+            <p>💰 {t('footer.trust2')}</p>
+            <p>🏦 {t('footer.trust3')}</p>
+            <p>📦 {t('footer.trust4')}</p>
           </div>
         </div>
       </div>
 
       <div className="mt-10 pt-6 border-t border-border text-center">
         <p className="text-xs text-muted-foreground">
-          © 2024 Sellami Honey — Apiculture Tunisienne 100% Locale. Tous droits réservés.
+          {t('footer.copyright')}
         </p>
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;

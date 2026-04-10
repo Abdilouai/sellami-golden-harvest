@@ -4,10 +4,12 @@ import { ShoppingCart, MessageCircle } from "lucide-react";
 import { Product } from "@/data/products";
 import { getProductImage } from "@/lib/images";
 import { useCart } from "@/context/CartContext";
+import { useTranslation } from "react-i18next";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const [selectedIdx, setSelectedIdx] = useState(0);
   const { addItem } = useCart();
+  const { t } = useTranslation();
   const variant = product.variants[selectedIdx];
   const hasDiscount = !!variant.originalPrice;
 
@@ -81,9 +83,9 @@ const ProductCard = ({ product }: { product: Product }) => {
 
         {/* Price */}
         <div className="flex items-baseline gap-2">
-          <span className="text-lg font-bold text-primary font-body">{variant.price.toFixed(3)} DT</span>
+          <span className="text-lg font-bold text-primary font-body">{variant.price.toFixed(3)} {t('products.dt')}</span>
           {hasDiscount && (
-            <span className="text-sm text-muted-foreground line-through">{variant.originalPrice!.toFixed(3)} DT</span>
+            <span className="text-sm text-muted-foreground line-through">{variant.originalPrice!.toFixed(3)} {t('products.dt')}</span>
           )}
         </div>
 
@@ -94,7 +96,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-gradient-gold text-primary-foreground font-semibold text-sm rounded-lg hover:opacity-90 transition-opacity min-h-[44px]"
           >
             <ShoppingCart className="w-4 h-4" />
-            Ajouter au panier
+            {t('products.add_to_cart')}
           </button>
           <a
             href={`https://wa.me/21623218453?text=${whatsappMsg}`}

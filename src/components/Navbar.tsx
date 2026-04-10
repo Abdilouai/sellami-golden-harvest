@@ -1,21 +1,30 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingCart, Phone, Menu, X } from "lucide-react";
+import { ShoppingCart, Phone, Menu, X, Globe } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo.png";
 
-const navLinks = [
-  { label: "Accueil", path: "/" },
-  { label: "Nos Miels", path: "/nos-miels" },
-  { label: "Promotions", path: "/promotions" },
-  { label: "À Propos", path: "/a-propos" },
-  { label: "Contact", path: "/contact" },
+const navLinksKeys = [
+  { key: "home", path: "/" },
+  { key: "products", path: "/nos-miels" },
+  { key: "promos", path: "/promotions" },
+  { key: "about", path: "/a-propos" },
+  { key: "contact", path: "/contact" },
 ];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { totalItems, setIsOpen } = useCart();
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'fr' ? 'ar' : 'fr';
+    i18n.changeLanguage(newLang);
+    document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = newLang;
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
@@ -28,7 +37,7 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
-          {navLinks.map(link => (
+          {navLinksKeys.map(link => (
             <Link
               key={link.path}
               to={link.path}
@@ -36,12 +45,20 @@ const Navbar = () => {
                 location.pathname === link.path ? "text-primary" : "text-foreground/80"
               }`}
             >
-              {link.label}
+              {t(`nav.${link.key}`)}
             </Link>
           ))}
         </div>
 
         <div className="flex items-center gap-3">
+          <button
+            onClick={toggleLanguage}
+            className="hidden md:flex items-center gap-1.5 text-xs font-medium text-foreground hover:text-primary transition-colors p-2"
+          >
+            <Globe className="w-4 h-4" />
+            {i18n.language === 'fr' ? 'عربي' : 'FR'}
+          </button>
+
           <a
             href="tel:+21623218453"
             className="hidden md:flex items-center gap-1.5 text-xs font-medium text-primary hover:text-accent transition-colors"
@@ -53,7 +70,7 @@ const Navbar = () => {
           <button
             onClick={() => setIsOpen(true)}
             className="relative p-2 rounded-lg hover:bg-muted transition-colors"
-            aria-label="Panier"
+            aria-label={t('nav.cart')}
           >
             <ShoppingCart className="w-5 h-5 text-foreground" />
             {totalItems > 0 && (
@@ -77,7 +94,14 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="lg:hidden bg-background border-t border-border animate-fade-in-up">
           <div className="container py-4 flex flex-col gap-3">
-            {navLinks.map(link => (
+            <button
+              onClick={() => { toggleLanguage(); setMobileOpen(false); }}
+              className="py-3 px-4 rounded-lg text-base font-medium transition-colors hover:bg-muted text-foreground flex items-center gap-2"
+            >
+              <Globe className="w-5 h-5" />
+              {i18n.language === 'fr' ? 'Passer en Arabe (عربي)' : 'Passer en Français (FR)'}
+            </button>
+            {navLinksKeys.map(link => (
               <Link
                 key={link.path}
                 to={link.path}
@@ -88,7 +112,7 @@ const Navbar = () => {
                     : "hover:bg-muted text-foreground/80"
                 }`}
               >
-                {link.label}
+                {t(`nav.${link.key}`)}
               </Link>
             ))}
             <a

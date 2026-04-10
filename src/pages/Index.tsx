@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
-import { Phone, ChevronRight, Star, Leaf, Truck, Shield, Gift, MessageCircle } from "lucide-react";
+import { Phone, ChevronRight, Star, Leaf, Truck, Shield, Gift } from "lucide-react";
 import { products, categories } from "@/data/products";
-import { getProductImage } from "@/lib/images";
+import { useTranslation } from "react-i18next";
 import ProductCard from "@/components/ProductCard";
 import logo from "@/assets/logo.png";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const trustItems = [
-  "🐝 100% Naturel",
-  "🚚 Livraison à domicile",
-  "💰 Paiement à la livraison",
-  "✅ Qualité garantie",
-  "📦 Emballage cadeau disponible",
+const trustItemsKeys = [
+  "home.trust1",
+  "home.trust2",
+  "home.trust3",
+  "home.trust4",
+  "home.trust5",
 ];
 
 const testimonials = [
@@ -22,6 +22,7 @@ const testimonials = [
 ];
 
 const Index = () => {
+  const { t } = useTranslation();
   const bestSellers = products.filter(p => p.isBestSeller).slice(0, 4);
 
   return (
@@ -36,19 +37,19 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 animate-fade-in-up">
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="text-gradient-gold glow-text">Miel Pur de Tunisie</span>
+                <span className="text-gradient-gold glow-text">{t('home.title1')}</span>
                 <br />
                 <span className="text-foreground text-3xl md:text-5xl opacity-90 mt-2 block">&bull; Sellami Honey &bull;</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-lg mt-6">
-                Découvrez la richesse du miel tunisien, récolté avec passion par la famille Sellami depuis des générations.
+                {t('home.subtitle')}
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
                   to="/nos-miels"
                   className="inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-gold text-primary-foreground font-bold rounded-lg text-base hover:opacity-90 transition-opacity min-h-[48px]"
                 >
-                  Découvrir nos miels
+                  {t('home.btn_discover')}
                   <ChevronRight className="w-5 h-5" />
                 </Link>
                 <a
@@ -56,7 +57,7 @@ const Index = () => {
                   className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-primary text-primary font-bold rounded-lg text-base hover:bg-primary/10 transition-colors min-h-[48px]"
                 >
                   <Phone className="w-5 h-5" />
-                  Appeler maintenant
+                  {t('home.btn_call')}
                 </a>
               </div>
             </div>
@@ -70,9 +71,10 @@ const Index = () => {
       {/* Trust Bar */}
       <section className="bg-primary/10 border-y border-primary/20 overflow-hidden py-3">
         <div className="flex animate-ticker whitespace-nowrap">
-          {[...trustItems, ...trustItems, ...trustItems].map((item, i) => (
+          {[...trustItemsKeys, ...trustItemsKeys, ...trustItemsKeys].map((item, i) => (
             <span key={i} className="inline-block px-6 text-sm font-medium text-primary">
-              {item}
+              {i % 5 === 0 ? "🐝 " : i % 5 === 1 ? "🚚 " : i % 5 === 2 ? "💰 " : i % 5 === 3 ? "✅ " : "📦 "}
+              {t(item)}
             </span>
           ))}
         </div>
@@ -82,7 +84,7 @@ const Index = () => {
       <section className="py-16 md:py-20 bg-honeycomb">
         <div className="container">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-10 text-gradient-gold">
-            Nos Catégories
+            {t('home.cat_title')}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {categories.map(cat => (
@@ -105,10 +107,10 @@ const Index = () => {
         <div className="container">
           <div className="flex items-center justify-between mb-10">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-gradient-gold">
-              Nos Best Sellers
+              {t('home.best_title')}
             </h2>
             <Link to="/nos-miels" className="text-sm text-primary hover:text-accent transition-colors font-medium flex items-center gap-1">
-              Voir tout <ChevronRight className="w-4 h-4" />
+              {t('home.view_all')} <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -123,20 +125,20 @@ const Index = () => {
       <section className="py-16 md:py-20 bg-card">
         <div className="container">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gradient-gold">
-            Pourquoi Sellami Honey?
+            {t('home.why_title')}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: <Leaf className="w-8 h-8" />, title: "Pure & Naturel", desc: "100% miel pur, sans additifs ni sucre ajouté. Directement de nos ruches à votre table." },
-              { icon: <Shield className="w-8 h-8" />, title: "Apiculture Locale", desc: "Récolté dans les régions naturelles de Tunisie — Kasserine, Zaghouan, Béja, Siliana." },
-              { icon: <Truck className="w-8 h-8" />, title: "Livraison Rapide", desc: "Livraison à domicile sur toute la Tunisie. Paiement à la livraison pour votre confort." },
+              { icon: <Leaf className="w-8 h-8" />, titleKey: "home.why1_title", descKey: "home.why1_desc" },
+              { icon: <Shield className="w-8 h-8" />, titleKey: "home.why2_title", descKey: "home.why2_desc" },
+              { icon: <Truck className="w-8 h-8" />, titleKey: "home.why3_title", descKey: "home.why3_desc" },
             ].map(item => (
-              <div key={item.title} className="text-center p-8 rounded-xl border border-border hover:border-primary/30 transition-colors">
+              <div key={item.titleKey} className="text-center p-8 rounded-xl border border-border hover:border-primary/30 transition-colors">
                 <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary/10 rounded-full text-primary">
                   {item.icon}
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                <h3 className="font-heading text-xl font-bold mb-3">{t(item.titleKey)}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{t(item.descKey)}</p>
               </div>
             ))}
           </div>
@@ -149,13 +151,13 @@ const Index = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <Gift className="w-10 h-10 text-primary-foreground" />
             <p className="text-xl md:text-2xl font-heading font-bold text-primary-foreground">
-              🎁 Pour toute commande de 2 kg : 1 pot de propolis OFFERT !
+              {t('home.promo_text')}
             </p>
             <Link
               to="/nos-miels"
               className="px-6 py-3 bg-primary-foreground text-primary font-bold rounded-lg hover:opacity-90 transition-opacity min-h-[48px]"
             >
-              En profiter
+              {t('home.promo_btn')}
             </Link>
           </div>
         </div>
@@ -165,7 +167,7 @@ const Index = () => {
       <section className="py-16 md:py-20 bg-honeycomb">
         <div className="container">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gradient-gold">
-            Ce que disent nos clients
+            {t('home.testim_title')}
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {testimonials.map((t, i) => (
